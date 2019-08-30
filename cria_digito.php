@@ -27,7 +27,9 @@ function validar_cnpj($cnpj)
     $resto = $soma % 11;
     $cnpj{13} = $resto < 2 ? 0 : 11 - $resto;
 
-    print_r($cnpj);
+    $response = json_encode($cnpj);
+    $response = str_replace('"', '', $response);
+    return $response;
 }
 
 $val = validar_cnpj('09.524.502/0001');
